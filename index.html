@@ -1,0 +1,89 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>Mesto</title>
+</head>
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="images/logo.svg" alt="логотип">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <div class="position">
+        <img class="profile__avatar" src="images/jack_kusto.jpg" alt="аватарка">
+
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button" aria-label="редактировать"></button>
+          <p class="profile__profil">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add-button" type="button" aria-label="добавить"></button>
+    </section>
+
+    <section class="Elements">
+      <div class="Elements__item">
+        <img class="Elements__item-pic" src="images/karachaevsk.jpg" alt="Карачаевск">
+        <div class="Elements__item-text">
+          <h2 class="Elements__item-title">Карачаевск</h2>
+          <button class="Elements__item-like" type="button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="Elements__item">
+        <img class="Elements__item-pic" src="images/elbrus.jpg" alt="Гора Эльбрус">
+        <div class="Elements__item-text">
+          <h2 class="Elements__item-title">Гора Эльбрус</h2>
+          <button class="Elements__item-like" type="button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="Elements__item">
+        <img class="Elements__item-pic" src="images/dombay.jpg" alt="Домбай">
+        <div class="Elements__item-text">
+          <h2 class="Elements__item-title">Домбай</h2>
+          <button class="Elements__item-like" type="button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="Elements__item">
+        <img class="Elements__item-pic" src="images/elbrus.jpg" alt="Гора Эльбрус">
+        <div class="Elements__item-text">
+          <h2 class="Elements__item-title">Гора Эльбрус</h2>
+          <button class="Elements__item-like" type="button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="Elements__item">
+        <img class="Elements__item-pic" src="images/dombay.jpg" alt="Домбай">
+        <div class="Elements__item-text">
+          <h2 class="Elements__item-title">Домбай</h2>
+          <button class="Elements__item-like" type="button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="Elements__item">
+        <img class="Elements__item-pic" src="images/karachaevsk.jpg" alt="Карачаевск">
+        <div class="Elements__item-text">
+          <h2 class="Elements__item-title">Карачаево-Черкессия</h2>
+          <button class="Elements__item-like" type="button" aria-label="лайк"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__close" type="reset" aria-label="закрыть"></button>
+        <form class="popup__form">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input class="popup__input" type="text" placeholder="Имя" value="Жак-Ив Кусто" id="name" required>
+          <input class="popup__input" type="text" placeholder="О себе" value="Исследователь океана" id="profil" required>
+          <button class="popup__save" type="submit" aria-label="сохранить">Сохранить</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__name">© 2020 Mesto Russia</p>
+  </footer>
+
+  <script src="scripts/script.js"></script>
+</body>
+</html>
