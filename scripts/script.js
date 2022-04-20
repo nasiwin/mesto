@@ -1,4 +1,4 @@
-let Name = document.querySelector('.profile__name');
+let name = document.querySelector('.profile__name');
 let Job = document.querySelector('.profile__profil');
 let formElement = document.querySelector('.popup');
 let nameInput = document.querySelector('#name');
@@ -12,7 +12,7 @@ EditButton.addEventListener('click', function () {
 
 function formSubmitHandler(evt) {
   evt.preventDefault(); 
-  Name.textContent = nameInput.value;
+  name.textContent = nameInput.value;
   Job.textContent = jobInput.value;
   formElement.classList.remove('popup_opened');
 }

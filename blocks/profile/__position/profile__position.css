@@ -1,10 +1,10 @@
-.position {
+.profile__position {
   display: flex;
   align-items: center;
 }
 
 @media (max-width: 900px) {
-  .position {
+  .profile__position {
     flex-direction: column;
   }
 }

@@ -12,7 +12,7 @@
   </header>
   <main class="content">
     <section class="profile">
-      <div class="position">
+      <div class="profile__position">
         <img class="profile__avatar" src="images/jack_kusto.jpg" alt="аватарка">
 
         <div class="profile__info">
@@ -72,7 +72,7 @@
     <section class="popup">
       <div class="popup__container">
         <button class="popup__close" type="reset" aria-label="закрыть"></button>
-        <form class="popup__form">
+        <form class="popup__form" method="post" name="form-profile" id="profile">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input class="popup__input" type="text" placeholder="Имя" value="Жак-Ив Кусто" id="name" required>
           <input class="popup__input" type="text" placeholder="О себе" value="Исследователь океана" id="profil" required>
