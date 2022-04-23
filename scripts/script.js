@@ -15,6 +15,7 @@ const picCloseBtn = document.querySelector('.popup__close_pic');
 const elements = document.querySelector('.elements');
 const popupPic = document.querySelector('.popup_pic-opened');
 const popupTextPic = document.querySelector('.popup__text');
+const pic = document.querySelector('.popup__img');
 
 const initialCards = [
   {
@@ -115,7 +116,7 @@ function deleteCard(evt) {
 
 function openImagePopup(evt) {
   
-  const pic = document.querySelector('.popup__img');
+
   pic.src = evt.target.src;
   pic.alt = evt.target.alt;
   popupTextPic.textContent = pic.alt;
