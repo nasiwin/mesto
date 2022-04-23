@@ -1,0 +1,8 @@
+.popup__pic-form {
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
+  align-items: center;
+  background: none;
+  position: relative;
+}
