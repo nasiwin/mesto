@@ -9,14 +9,11 @@ const linkInput = document.querySelector('#link');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const popupOpen = document.querySelector('.popup__opened'); 
-const profileCloseBtn = document.querySelector('.popup__close');
-const photoCloseBtn = document.querySelector('.popup__close_photo');
-const picCloseBtn = document.querySelector('.popup__close_pic');
 const elements = document.querySelector('.elements');
 const popupPic = document.querySelector('.popup_pic-opened');
 const popupTextPic = document.querySelector('.popup__text');
 const pic = document.querySelector('.popup__img');
-
+const closeButtons = document.querySelectorAll('.popup__close');
 const initialCards = [
   {
     name: 'Архыз',
@@ -45,6 +42,14 @@ const initialCards = [
 ]; 
 
 
+
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  //Спасибо)
+  button.addEventListener('click', () => closePopup(popup));
+});
+
+
 editButton.addEventListener('click', function () {
   openPopup(popupName);
 }); 
@@ -57,15 +62,14 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault(); 
   name.textContent = nameInput.value;
   job.textContent = jobInput.value;
-  openPopup(popupName);
+  closePopup(popupName);
 }
 
 function handlePhotosFormSubmit(evt) {
   evt.preventDefault();
   elements.prepend(addPhoto(linkInput.value, namePhotoInput.value));
-  linkInput.value = '';
-  namePhotoInput.value = '';
-  openPopup(popupPhotos);
+  evt.target.reset();
+  closePopup(popupPhotos);
 }
 
 function openPopup(popup) {
@@ -74,17 +78,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
-profileCloseBtn.addEventListener('click', function () {
-  closePopup(popupName);
-});
 
-photoCloseBtn.addEventListener('click', function () {
-  closePopup(popupPhotos);
-});
-
-picCloseBtn.addEventListener('click', function () {
-  closePopup(popupPic);
-});
 
 popupName.addEventListener('submit', handleProfileFormSubmit);
 popupPhotos.addEventListener('submit', handlePhotosFormSubmit); 
@@ -122,3 +116,10 @@ function openImagePopup(evt) {
   popupTextPic.textContent = pic.alt;
   openPopup(popupPic);
 };
+
+function offActivePopupKey(event) {
+  if (event.keyCode === 27) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
+document.addEventListener('keyup', offActivePopupKey);
