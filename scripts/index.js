@@ -8,7 +8,6 @@ const namePhotoInput = document.querySelector('#name-photo');
 const linkInput = document.querySelector('#link');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
-const popupOpen = document.querySelector('.popup__opened'); 
 const elements = document.querySelector('.elements');
 const popupPic = document.querySelector('.popup_pic-opened');
 const popupTextPic = document.querySelector('.popup__text');
@@ -47,7 +46,13 @@ closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   //Спасибо)
   button.addEventListener('click', () => closePopup(popup));
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+  });
 });
+
 
 
 editButton.addEventListener('click', function () {
@@ -74,9 +79,11 @@ function handlePhotosFormSubmit(evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keyup', offActivePopupKey);
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', offActivePopupKey);
 }
 
 
@@ -122,4 +129,3 @@ function offActivePopupKey(event) {
     closePopup(document.querySelector('.popup_opened'));
   }
 }
-document.addEventListener('keyup', offActivePopupKey);

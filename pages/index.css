@@ -34,8 +34,8 @@
 @import url(../blocks/popup/__img/popup__img.css);
 @import url(../blocks/popup/__text/popup__text.css);
 @import url(../blocks/popup/__pic-form/popup__pic-form.css);
-@import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error-position/popup__error-position.css);
+@import url(../blocks/popup/__error-position/_span-error/popup__error-position_span-error.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__name/footer__name.css);
 @import url(../blocks/profile/__position/profile__position.css);
