@@ -35,7 +35,7 @@
 @import url(../blocks/popup/__text/popup__text.css);
 @import url(../blocks/popup/__pic-form/popup__pic-form.css);
 @import url(../blocks/popup/__position/popup__position.css);
-@import url(../blocks/popup/__position/_span-error/popup__position_span-error.css);
+@import url(../blocks/popup/__position/_error/popup__position_error.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__name/footer__name.css);
 @import url(../blocks/profile/__position/profile__position.css);
