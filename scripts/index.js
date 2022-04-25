@@ -58,8 +58,6 @@ buttonEdit.addEventListener('click', function () {
   openPopup(popupName);
 }); 
 
-
-
 buttonAdd.addEventListener('click', function (evt) {
   linkInput.value = '';
   namePhotoInput.value = '';
