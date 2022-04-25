@@ -6,13 +6,14 @@ const nameInput = document.querySelector('#name');
 const jobInput = document.querySelector('#profil');
 const namePhotoInput = document.querySelector('#name-photo');
 const linkInput = document.querySelector('#link');
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
-const elements = document.querySelector('.elements');
+const buttonEdit = document.querySelector('.profile__edit-button');
+const buttonAdd = document.querySelector('.profile__add-button');
+const elementPhotos = document.querySelector('.elements');
 const popupPic = document.querySelector('.popup_pic-opened');
 const popupTextPic = document.querySelector('.popup__text');
-const pic = document.querySelector('.popup__img');
+const picture = document.querySelector('.popup__img');
 const closeButtons = document.querySelectorAll('.popup__close');
+const buttonSave = document.querySelector('.popup__save');
 const initialCards = [
   {
     name: 'Архыз',
@@ -40,8 +41,6 @@ const initialCards = [
   }
 ]; 
 
-
-
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   //Спасибо)
@@ -53,13 +52,19 @@ closeButtons.forEach((button) => {
   });
 });
 
-
-
-editButton.addEventListener('click', function () {
+buttonEdit.addEventListener('click', function () {
+  nameInput.value = name.textContent;
+  jobInput.value = job.textContent;
   openPopup(popupName);
 }); 
 
-addButton.addEventListener('click', function () {
+
+
+buttonAdd.addEventListener('click', function (evt) {
+  linkInput.value = '';
+  namePhotoInput.value = '';
+  document.querySelector('#saveAdd').classList.add('popup__save_invalid');
+  document.querySelector('#saveAdd').setAttribute('disabled', true);
   openPopup(popupPhotos);
 }); 
 
@@ -72,7 +77,7 @@ function handleProfileFormSubmit(evt) {
 
 function handlePhotosFormSubmit(evt) {
   evt.preventDefault();
-  elements.prepend(addPhoto(linkInput.value, namePhotoInput.value));
+  elementPhotos.prepend(addPhoto(linkInput.value, namePhotoInput.value));
   evt.target.reset();
   closePopup(popupPhotos);
 }
@@ -85,7 +90,6 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keyup', offActivePopupKey);
 }
-
 
 popupName.addEventListener('submit', handleProfileFormSubmit);
 popupPhotos.addEventListener('submit', handlePhotosFormSubmit); 
@@ -102,9 +106,8 @@ function addPhoto(link, name) {
   return photo;
 }
 
-initialCards.forEach(function (evt) {
-  
-  elements.append(addPhoto(evt.link, evt.name));
+initialCards.forEach(function (item) {
+  elementPhotos.append(addPhoto(item.link, item.name));
 });
 
 function toggleLike(evt) {
@@ -116,11 +119,9 @@ function deleteCard(evt) {
 }
 
 function openImagePopup(evt) {
-  
-
-  pic.src = evt.target.src;
-  pic.alt = evt.target.alt;
-  popupTextPic.textContent = pic.alt;
+  picture.src = evt.target.src;
+  picture.alt = evt.target.alt;
+  popupTextPic.textContent = picture.alt;
   openPopup(popupPic);
 };
 
