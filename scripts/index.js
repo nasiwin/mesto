@@ -13,7 +13,7 @@ const popupPic = document.querySelector('.popup_pic-opened');
 const popupTextPic = document.querySelector('.popup__text');
 const picture = document.querySelector('.popup__img');
 const closeButtons = document.querySelectorAll('.popup__close');
-const buttonSave = document.querySelector('.popup__save');
+const buttonSave = document.querySelector('#saveAdd');
 const initialCards = [
   {
     name: 'Архыз',
@@ -63,8 +63,8 @@ buttonEdit.addEventListener('click', function () {
 buttonAdd.addEventListener('click', function (evt) {
   linkInput.value = '';
   namePhotoInput.value = '';
-  document.querySelector('#saveAdd').classList.add('popup__save_invalid');
-  document.querySelector('#saveAdd').setAttribute('disabled', true);
+  buttonSave.classList.add('popup__save_invalid');
+  buttonSave.setAttribute('disabled', true);
   openPopup(popupPhotos);
 }); 
 
