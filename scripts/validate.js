@@ -66,4 +66,3 @@ enableValidation({
   inputErrorClass: 'popup__input_invalid',
   errorClass: 'popup__error'
 });
-
