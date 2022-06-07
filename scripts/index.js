@@ -4,6 +4,8 @@ import { FormValidator } from './FormValidator.js';
 const photo = document.querySelector('.temp-photo').content.cloneNode(true);
 const popupName = document.querySelector('.popup-name');
 const popupPhotos = document.querySelector('.popup-photos');
+const popupFormName = popupName.querySelector('.popup__form');
+const popupFormPhotos = popupPhotos.querySelector('.popup__form');
 const name = document.querySelector('.profile__name');
 const job = document.querySelector('.profile__profil');
 const nameInput = document.querySelector('#name');
@@ -17,7 +19,7 @@ const popupPic = document.querySelector('.popup_pic-opened');
 const popupTextPic = document.querySelector('.popup__text');
 const picture = document.querySelector('.popup__img');
 const closeButtons = document.querySelectorAll('.popup__close');
-const buttonSave = document.querySelector('#saveAdd');
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -53,6 +55,8 @@ const validationSetting = {
   inputErrorClass: 'popup__input_invalid',
   errorClass: 'popup__error'
 };
+const validationFormName = new FormValidator(validationSetting, popupFormName);
+const validationFormPhotos = new FormValidator(validationSetting, popupFormPhotos);
 
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
@@ -67,14 +71,14 @@ closeButtons.forEach((button) => {
 buttonEdit.addEventListener('click', function () {
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;
+  validationFormName.disableValidation();
   openPopup(popupName);
 }); 
 
 buttonAdd.addEventListener('click', function (evt) {
   linkInput.value = '';
   namePhotoInput.value = '';
-  buttonSave.classList.add('popup__save_invalid');
-  buttonSave.setAttribute('disabled', true);
+  validationFormPhotos.disableValidation();
   openPopup(popupPhotos);
 }); 
 
@@ -88,7 +92,6 @@ function handleProfileFormSubmit(evt) {
 function handlePhotosFormSubmit(evt) {
   evt.preventDefault();
   addPhoto(linkInput.value, namePhotoInput.value);
-  evt.target.reset();
   closePopup(popupPhotos);
 }
 
@@ -101,20 +104,8 @@ function closePopup(popup) {
   document.removeEventListener('keyup', offActivePopupKey);
 }
 
-popupName.addEventListener('submit', handleProfileFormSubmit);
-popupPhotos.addEventListener('submit', handlePhotosFormSubmit); 
-
-/*function addPhoto(link, name) {
-  const photo = document.querySelector('.temp-photo').content.cloneNode(true);
-  const photoPic = photo.querySelector('.elements__item-pic');
-  photoPic.src = link;
-  photoPic.alt = name;
-  photo.querySelector('.elements__item-title').textContent = name;
-  photo.querySelector('.elements__item-like').addEventListener('click', toggleLike)
-  photo.querySelector('.elements__trash-button').addEventListener('click', deleteCard);
-  photoPic.addEventListener('click', openImagePopup);
-  return photo;
-}*/
+popupFormName.addEventListener('submit', handleProfileFormSubmit);
+popupFormPhotos.addEventListener('submit', handlePhotosFormSubmit); 
 
 function openImagePopup(link, name) {
   picture.src = link;
@@ -124,28 +115,21 @@ function openImagePopup(link, name) {
 };
 
 function offActivePopupKey(event) {
-  if (event.keyCode === 27) {
+  if (event.key === "Escape") {
     closePopup(document.querySelector('.popup_opened'));
   }
 };
 
-function validation(Setting) {
-  const { formSelector } = Setting;
-  const forms = document.querySelectorAll(formSelector);
-  forms.forEach((formElement) => {
-    const form = new FormValidator(Setting, formElement);
-    form.enableValidation();
-  });
+function newCreatCard(item) {
+  return new Card(item, photo, openImagePopup)
 };
 
-validation(validationSetting);
-
 initialCards.forEach(item => {
-  const card = new Card(item, photo, openImagePopup);
-  elementPhotos.append(card.createCard());
+  elementPhotos.append(newCreatCard(item).createCard());
 });
 
 function addPhoto(link, name) {
-  const card = new Card({name, link}, photo, openImagePopup);
-  elementPhotos.append(card.createCard());
+  elementPhotos.append(newCreatCard({name, link}).createCard());
 };
+validationFormName.enableValidation();
+validationFormPhotos.enableValidation();

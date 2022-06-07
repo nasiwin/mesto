@@ -36,7 +36,6 @@ export class FormValidator {
 
   _showInputError(inputElement) {
     const formError = this._form.querySelector(`#${inputElement.id}-error`);
-    console.log(this._setting);
     inputElement.classList.add(this._setting.inputErrorClass);
     formError.textContent = inputElement.validationMessage;
     formError.classList.add(this._setting.errorClass);
@@ -58,6 +57,12 @@ export class FormValidator {
     };
   };
 
+  disableValidation() {
+    this._toggleButtonState();
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+  };
   enableValidation() {
     this._setEventListeners();
   };
