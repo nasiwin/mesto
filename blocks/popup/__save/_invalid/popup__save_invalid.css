@@ -5,3 +5,6 @@
   background: #FFFFFF;
   color: #000000;
 }
+.popup__save_invalid:hover {
+  opacity: 0.2;
+}

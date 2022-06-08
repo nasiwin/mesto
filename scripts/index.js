@@ -120,16 +120,16 @@ function offActivePopupKey(event) {
   }
 };
 
-function newCreatCard(item) {
-  return new Card(item, photo, openImagePopup)
+function createNewCard(item) {
+  return new Card(item, photo, openImagePopup).createCard()
 };
 
 initialCards.forEach(item => {
-  elementPhotos.append(newCreatCard(item).createCard());
+  elementPhotos.prepend(createNewCard(item));
 });
 
 function addPhoto(link, name) {
-  elementPhotos.append(newCreatCard({name, link}).createCard());
+  elementPhotos.prepend(createNewCard({name, link}));
 };
 validationFormName.enableValidation();
 validationFormPhotos.enableValidation();
