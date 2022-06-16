@@ -40,11 +40,11 @@
         <button class="popup__close" type="reset" aria-label="закрыть"></button>
         <form class="popup__form" method="post" name="form-profile" id="profile-form" novalidate>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__input" type="text" placeholder="Имя" value="Жак-Ив Кусто" id="name" minlength="2" maxlength="40" required>
+          <input class="popup__input popup__input_name" type="text" placeholder="Имя" name ="name" value="Жак-Ив Кусто" id="name" minlength="2" maxlength="40" required>
           <div class="popup__position">
             <span id="name-error" class="popup__error"></span>
           </div>
-          <input class="popup__input" type="text" placeholder="О себе" value="Исследователь океана" id="profil" minlength="2" maxlength="200" required>
+          <input class="popup__input popup__input_profil" type="text" placeholder="О себе" name="job" value="Исследователь океана" id="profil" minlength="2" maxlength="200" required>
           <div class="popup__position">
             <span id="profil-error" class="popup__error"></span>
           </div>
@@ -57,7 +57,7 @@
         <button class="popup__close popup__close_photo" type="reset" aria-label="закрыть"></button>
         <form class="popup__form" method="post" name="form-photo" id="photos">
           <h2 class="popup__title">Новое место</h2>
-          <input class="popup__input" type="text" placeholder="Название" value="" name="name-photo" id="name-photo" minlength="2" maxlength="30" required>
+          <input class="popup__input" type="text" placeholder="Название" value="" name="name" id="name-photo" minlength="2" maxlength="30" required>
           <div class="popup__position">
             <span id="name-photo-error" class="popup__error"></span>
           </div>
@@ -81,6 +81,6 @@
     <p class="footer__name">© 2020 Mesto Russia</p>
   </footer>
 
-  <script src="scripts/index.js" type="module" charset="utf-8"></script>
+  <script src="pages/index.js" type="module" charset="utf-8"></script>
 </body>
   </html>

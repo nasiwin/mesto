@@ -1,13 +1,15 @@
 export class Card {
-  constructor(dataCard, cardSelector, openImagePopup) {
+  constructor({dataCard, handleCardClick}, cardSelector) {
+    console.log(dataCard);
     this._nameCard = dataCard.name;
     this._linkCard = dataCard.link;
     this._cardSelector = cardSelector;
-    this._card = this._cardSelector.querySelector('.elements__item').cloneNode(true);
-    this._openImagePopup = openImagePopup;
+    this._card = document.querySelector(this._cardSelector).content.querySelector('.elements__item').cloneNode(true);
     this._like = this._card.querySelector('.elements__item-like');
     this._photoPic = this._card.querySelector('.elements__item-pic');
+    this._handleCardClick = handleCardClick;
   }
+  
 
   _removeButton() {
     this._card.remove();
@@ -28,7 +30,7 @@ export class Card {
       this._toggleLikeCard();
     });
     this._card.querySelector('.elements__item-pic').addEventListener('click', () => {
-      this._openImagePopup(this._linkCard, this._nameCard);
+      this._handleCardClick({link: this._linkCard, name: this._nameCard});
     });
   }
 
