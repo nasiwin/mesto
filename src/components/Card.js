@@ -10,7 +10,7 @@ export class Card {
   }
   
 
-  _removeButton() {
+  _removeCard() {
     this._card.remove();
     this._card = null;
   }
@@ -23,12 +23,12 @@ export class Card {
 
   _setEvent() {
     this._card.querySelector('.elements__trash-button').addEventListener('click', () => {
-      this._removeButton();
+      this._removeCard();
     });
     this._like.addEventListener('click', () => {
       this._toggleLikeCard();
     });
-    this._card.querySelector('.elements__item-pic').addEventListener('click', () => {
+    this._photoPic.addEventListener('click', () => {
       this._handleCardClick({link: this._linkCard, name: this._nameCard});
     });
   }

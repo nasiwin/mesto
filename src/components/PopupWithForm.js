@@ -10,7 +10,7 @@ export default class PopupWithForm extends Popup{
   }
 
   _getInputValues() {
-    this._data = [];
+    this._data = {};
     this._inputList.forEach(inputElement => {
       this._data[inputElement.name] = inputElement.value;
     });
