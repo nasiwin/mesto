@@ -1,0 +1,7 @@
+.elements__likeBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 22px 20px 0 0;
+}
