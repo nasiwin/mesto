@@ -163,7 +163,7 @@ const handleLikeClick = (item) => {
 
 const popupDeleteCard = new PopupCardDelete('.popup-delete', (element) => {
   console.log(element);
-  api.deleteCard(element._idCard)
+  api.getDeleteCard(element._idCard)
     .then(() => {
       element.removeCard();
       popupDeleteCard.close();
