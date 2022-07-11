@@ -50,7 +50,7 @@ const cardArr = new Section({renderer: element => {
     cardArr.addItem(createNewCard(element));
   }}, elementPhotos);
 
-  api.allData()
+  api.getAllData()
   .then(([item, cards]) => {
     userInfo.setUserInfo(item.name, item.about, item.avatar);
     userId.id = item._id;
@@ -61,10 +61,12 @@ const cardArr = new Section({renderer: element => {
   });
 
 const popupAddCardForm = new PopupWithForm(popupPhotosSelect, (element) => {
-  api.newCard(element)
+  popupAddCardForm.UX(true);
+  api.getNewCard(element)
     .then((res) => {
-      popupAddCardForm.UX(true);
+      
       cardArr.addItem(createNewCard(res));
+      popupAddCardForm.close();
     })
     .catch((err) => {
       console.log(`Ошибка отправки данных карточки: ${err}`);
@@ -75,10 +77,12 @@ const popupAddCardForm = new PopupWithForm(popupPhotosSelect, (element) => {
 popupAddCardForm.setEventListeners();
 
 const popupEditProfilForm = new PopupWithForm(popupProfileSelecrot, (element) => {
-  api.renameProfile(element)
+  popupEditProfilForm.UX(true);
+  api.getRenameProfile(element)
         .then((item) => {
-          popupEditProfilForm.UX(true);
+          
           userInfo.setUserInfo(item.name, item.about, item.avatar);
+          popupEditProfilForm.close();
         })
         .catch(err => console.log(`Ошибка обновления данных: ${err}`))
         .finally(() => {
@@ -90,10 +94,12 @@ const popupEditProfilForm = new PopupWithForm(popupProfileSelecrot, (element) =>
 popupEditProfilForm.setEventListeners();
 
 const popupAvatarProfilForm = new PopupWithForm(popupAvatarSelector, (element) => {
+  popupAvatarProfilForm.UX(true);
     api.setProfileAvatar(element)
       .then((item) => {
-        popupAvatarProfilForm.UX(true);
+        
         userInfo.setUserInfo(item.name, item.about, item.avatar);
+        popupAvatarProfilForm.close();
       })
       .catch(err => console.log(`Ошибка аватара: ${err}`))
       .finally(() => {
@@ -140,7 +146,7 @@ const handleLikeClick = (item) => {
   /*console.log(item.getId());
   console.log(item.checkLiked());*/
   if (item.checkLiked() === false) {
-    api.cardLike(item.getId())
+    api.getCardLike(item.getId())
       .then(dataLikes => {
         item.setLikes(dataLikes.likes);
       })
@@ -159,8 +165,8 @@ const popupDeleteCard = new PopupCardDelete('.popup-delete', (element) => {
   console.log(element);
   api.deleteCard(element._idCard)
     .then(() => {
-      element.removeCard()
-      popupDeleteCard.close()
+      element.removeCard();
+      popupDeleteCard.close();
     })
     .catch(err => console.log(`Ошибка удалния карточки: ${err}`))
 });

@@ -5,8 +5,8 @@ export default class Api {
         console.log(item);
     }
 
-    allData() {
-        return Promise.all([this.profile(), this.dataCards()])
+    getAllData() {
+        return Promise.all([this.getProfile(), this.getDataCards()])
       }
 
     _request(res) {
@@ -18,7 +18,7 @@ export default class Api {
 
     
 
-     dataCards(){
+     getDataCards(){
         return fetch(`${this._url}/cards`, {
             method: "GET",
             headers: this._headers
@@ -28,7 +28,7 @@ export default class Api {
             })
     }
 
-    newCard(item) {
+    getNewCard(item) {
         return fetch(`${this._url}/cards`, {
           method: 'POST',
           headers: this._headers,
@@ -39,7 +39,7 @@ export default class Api {
           })
       }
 
-      deleteCard(id) {
+      getDeleteCard(id) {
         return fetch(`${this._url}/cards/${id}`, {
           method: 'DELETE',
           headers: this._headers
@@ -49,7 +49,7 @@ export default class Api {
           })
       }
 
-      profile(){
+      getProfile(){
         return fetch(`${this._url}/users/me`, {
             method: "GET",
             headers: this._headers
@@ -59,7 +59,7 @@ export default class Api {
             })
       }
 
-      renameProfile(item) {
+      getRenameProfile(item) {
         return fetch(`${this._url}/users/me`, {
           method: 'PATCH',
           headers: this._headers,
@@ -81,7 +81,7 @@ export default class Api {
           })
       }
 
-      cardLike(id) {
+      getCardLike(id) {
         return fetch(`${this._url}/cards/likes/${id}`, {
           method:'PUT',
           headers: this._headers,
