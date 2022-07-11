@@ -62,20 +62,20 @@
           <button type="button" class="popup__close popup__close_avatar" aria-label="Закрыть"></button>
           <form class="popup__form" method="post" name="form-avatar" id="avatar">
             <h2 class="popup__title">Обновить аватар</h2>
-            <input class="popup__input" type="url" placeholder="Ссылка на карточку" value="" name="avatar" id="link" required>
+            <input class="popup__input" type="url" placeholder="Ссылка на карточку" value="" name="avatar" id="link-avatar" required>
             <div class="popup__position">
-              <span id="link-error" class="popup__error"></span>
+              <span id="link-avatar-error" name="link-error" class="popup__error"></span>
             </div>
-            <button class="popup__save" id="saveAdd" type="submit" aria-label="сохранить">Сохранить</button>
+            <button class="popup__save" id="saveAdd-avatar" name="saveAdd" type="submit" aria-label="сохранить">Сохранить</button>
           </form>
       </div>
     </section>
     <section class="popup popup-delete">
       <div class="popup__container">
           <button type="button" class="popup__close popup__close_avatar" aria-label="Закрыть"></button>
-          <form class="popup__form" method="post" name="form-avatar" id="avatar">
+          <form class="popup__form" method="post" name="form-delete" id="form-delete">
             <h2 class="popup__title popup__title_delete">Вы уверены?</h2>
-            <button class="popup__save" id="saveAdd" type="submit" aria-label="Да">Да</button>
+            <button class="popup__save" id="saveAdd-delete" name="saveAdd" type="submit" aria-label="Да">Да</button>
           </form>
       </div>
     </section>
@@ -88,11 +88,11 @@
           <div class="popup__position">
             <span id="name-photo-error" class="popup__error"></span>
           </div>
-          <input class="popup__input" type="url" placeholder="Ссылка на карточку" value="" name="link" id="link" required>
+          <input class="popup__input" type="url" placeholder="Ссылка на карточку" value="" name="link" id="link-photos" required>
           <div class="popup__position">
-            <span id="link-error" class="popup__error"></span>
+            <span id="link-photos-error" name="link-error" class="popup__error"></span>
           </div>
-          <button class="popup__save" id="saveAdd" type="submit" aria-label="сохранить">Сохранить</button>
+          <button class="popup__save" id="saveAdd-photos" name="saveAdd" type="submit" aria-label="сохранить">Сохранить</button>
         </form>
       </div>
     </section>
